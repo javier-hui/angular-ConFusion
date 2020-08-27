@@ -3,13 +3,13 @@ import { Dish } from '../shared/dish';
 import { DISHES } from '../shared/dishes';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class DishService {
 
-  constructor() { }
+    constructor() { }
 
-  getDishes() : Dish[] {
-    return DISHES;
-  }
+    getDishes(): Dish[] {
+        return DISHES;
+    }
 }
