@@ -7,7 +7,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { FlexLayoutModule } from '@angular/flex-layout'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule, MatInput } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
@@ -28,37 +32,41 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MenuComponent,
-    DishdetailComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    AboutComponent,
-    ContactComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    FlexLayoutModule,
-    MatToolbarModule,
-    MatListModule,
-    MatGridListModule,
-    MatCardModule,
-    MatButtonModule,
-    MatDialogModule
-  ],
-  providers: [
-    DishService,
-    PromotionService,
-    LeaderService
-  ],
-  entryComponents: [
-      LoginComponent
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        MenuComponent,
+        DishdetailComponent,
+        HeaderComponent,
+        FooterComponent,
+        HomeComponent,
+        AboutComponent,
+        ContactComponent,
+        LoginComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        FlexLayoutModule,
+        FormsModule,
+        MatToolbarModule,
+        MatListModule,
+        MatGridListModule,
+        MatCardModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCheckboxModule
+    ],
+    providers: [
+        DishService,
+        PromotionService,
+        LeaderService
+    ],
+    entryComponents: [
+        LoginComponent
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
