@@ -12,21 +12,26 @@
                 <p>{{dish.description}}</p>
             </mat-card-content>
             <mat-card-actions>
+                <button mat-button [routerLink]="['/dishdetail', prev]">
+                    <span class="fas fa-chevron-left fa-lg"></span>
+                </button>
                 <button mat-button (click)="goBack()">BACK</button>
                 <button mat-button>LIKE</button>
                 <button mat-button>SHARE</button>
+                <span class="flex-spacer"></span>
+                <button mat-button [routerLink]="['/dishdetail', next]">
+                    <span class="fas fa-chevron-right fa-lg"></span>
+                </button>
             </mat-card-actions>
         </mat-card>
     </div>
 
     <div fxFlex="40" *ngIf="dish">
-        <h1 matLine>Comments</h1>
         <mat-list>
+            <h3>Comments</h3>
             <mat-list-item *ngFor="let comment of dish.comments">
-                <h1 matLine> {{comment.comment}} </h1>
-                <p matLine>
-                    <span> {{comment.rating}} Stars </span>
-                </p>
+                <h4 matLine> {{comment.comment}} </h4>
+                <p matLine> {{comment.rating}} Stars </p>
                 <p matLine>
                     <span> -- {{comment.author}} {{comment.date | date}} </span>
                 </p>
