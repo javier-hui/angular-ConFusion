@@ -13,6 +13,9 @@ At the end of this course you will:
 - Be able to use Angular Material and Angular Flex-Layout for designing responsive Angular applications
 - Be able to use Observables and RxJS in the context of Angular applications
 
+### This is Course 1 of 5 in the "Full Stack Web and Multiplatform Mobile App Development" Specialization.
+Learn front-end and hybrid mobile development, with server-side support, for implementing a multi-platform solution. The first two courses in this Specialization cover front-end frameworks: Bootstrap 4 and Angular. You’ll also learn to create hybrid mobile applications, using the Ionic framework, Cordova and NativeScript. On the server side, you’ll learn to implement NoSQL databases using MongoDB, work within a Node.js environment and Express framework, and communicate to the client side through a RESTful API. Learners enrolling in this Specialization are expected to have prior working knowledge of HTML, CSS and JavaScript. Ideally learners should complete the courses in the specified sequence. It is strongly recommended that the Angular course be completed before proceeding with the Ionic and Cordova and/or the NativeScript course.
+
 # Angular instructions
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
