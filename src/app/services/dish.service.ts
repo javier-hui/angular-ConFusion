@@ -21,13 +21,11 @@ export class DishService {
     }
 
     getDish(id: string): Observable<Dish> {
-        // simulate server latency with 2-second delay
         return this.http.get<Dish>(baseURL + 'dishes/' + id)
             .pipe(catchError(this.processHTTPMsgService.handleError));
     }
 
     getFeaturedDish(): Observable<Dish> {
-        // simulate server latency with 2-second delay
         return this.http.get<Dish>(baseURL + 'dishes?featured=true')
             .pipe(map(dishes => dishes[0]))
             .pipe(catchError(this.processHTTPMsgService.handleError));
