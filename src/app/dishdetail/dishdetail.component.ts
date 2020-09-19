@@ -6,24 +6,20 @@ import { DishService } from '../services/dish.service';
 import { switchMap } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Comment } from '../shared/comment';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { visibility, flyInOut, expand } from '../animations/app.animation';
 
 @Component({
     selector: 'app-dishdetail',
     templateUrl: './dishdetail.component.html',
     styleUrls: ['./dishdetail.component.scss'],
+    host: {
+        '[@flyInOut]': 'true',
+        'style': 'display: block;'
+    },
     animations: [
-        trigger('visibility', [
-            state('shown', style({
-                transform: 'scale(1.0)',
-                opacity: 1
-            })),
-            state('hidden', style({
-                transform: 'scale(0.5)',
-                opacity: 0
-            })),
-            transition('* => *', animate('0.5s ease-in-out'))
-        ])
+        flyInOut(),
+        visibility(),
+        expand()
     ]
 })
 export class DishdetailComponent implements OnInit {
@@ -50,13 +46,22 @@ export class DishdetailComponent implements OnInit {
             'required': 'Author Name is required.',
             'minlength': 'Author Name must be at least 2 characters long.'
         },
-        'commment': {
+        'comment': {
             'required': 'Comment is required.'
         },
     };
 
-    constructor(private dishService: DishService, private route: ActivatedRoute, private location: Location, private cm: FormBuilder, @Inject('baseURL') private BaseURL) {
+    constructor(private dishService: DishService, private route: ActivatedRoute, private location: Location, private cm: FormBuilder, @Inject('baseURL') private BaseURL) {}
+
+    ngOnInit(): void {
         this.createForm();
+        this.dishService.getDishIds()
+            .subscribe((dishIds) => this.dishIds = dishIds);
+        /*
+        this.route.params.pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
+            .subscribe((dish) => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id) },
+                errmess => this.errMess = <any>errmess);
+        */
         this.route.params.pipe(switchMap((params: Params) => { this.visibility = 'hidden'; return this.dishService.getDish(params['id']); }))
             .subscribe(dish => {
                 this.dish = dish;
@@ -65,14 +70,6 @@ export class DishdetailComponent implements OnInit {
                 this.visibility = 'shown';
             },
             errmess => this.errMess = <any>errmess);
-    }
-
-    ngOnInit(): void {
-        this.dishService.getDishIds()
-            .subscribe((dishIds) => this.dishIds = dishIds);
-        this.route.params.pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
-            .subscribe((dish) => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id) },
-                errmess => this.errMess = <any>errmess);
     }
 
     setPrevNext(dishId: string) {
